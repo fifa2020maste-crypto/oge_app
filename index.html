@@ -1,148 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Подготовка к ОГЭ по математике</title>
-    <!-- Подключаем Telegram Web App API Script -->
-    <script src="https://telegram.org"></script>
-    <style>
-        :root {
-            --tg-theme-bg-color: #ffffff;
-            --tg-theme-text-color: #000000;
-            --tg-theme-button-color: #248bed;
-            --tg-theme-button-text-color: #ffffff;
-            --tg-theme-secondary-bg-color: #f1f1f1;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--tg-theme-bg-color);
-            color: var(--tg-theme-text-color);
-            margin: 0; padding: 15px; box-sizing: border-box;
-        }
-        .nav-tabs {
-            display: flex; gap: 8px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 5px;
-        }
-        .tab-btn {
-            background: var(--tg-theme-secondary-bg-color);
-            color: var(--tg-theme-text-color);
-            border: none; padding: 8px 16px; border-radius: 15px; cursor: pointer; white-space: nowrap; font-weight: bold;
-        }
-        .tab-btn.active {
-            background: var(--tg-theme-button-color);
-            color: var(--tg-theme-button-text-color);
-        }
-        .content-section { display: none; }
-        .content-section.active { display: block; }
-        .card {
-            background: var(--tg-theme-secondary-bg-color);
-            padding: 15px; border-radius: 12px; margin-bottom: 15px;
-        }
-        .btn-action {
-            background: var(--tg-theme-button-color);
-            color: var(--tg-theme-button-text-color);
-            border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px;
-        }
-        .form-group { margin-bottom: 12px; }
-        label { display: block; margin-bottom: 5px; font-weight: 5px; font-size: 14px; }
-        input, select {
-            width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box;
-            background: var(--tg-theme-bg-color); color: var(--tg-theme-text-color);
-        }
-        .solution { display: none; margin-top: 10px; font-style: italic; border-left: 3px solid var(--tg-theme-button-color); padding-left: 8px; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ОГЭ по математике онлайн: бесплатный пробный урок</title>
+<meta name="description" content="Онлайн-подготовка к ОГЭ по математике: теория, тренажёры, разбор ошибок. Запишись на бесплатный пробный урок в Telegram.">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fbfaf3;--grid:#d6e4f0;--ink:#1d2f6f;--pen:#d23b3b;--mark:#ffe36e;--mute:#5d6786;--card:#fff;--ok:#1f8a4c;--on-ink:#fff;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151a2e;--grid:#222a47;--ink:#e3e9ff;--pen:#ff7a7a;--mark:#6b5b00;--mute:#9aa3c2;--card:#1d2340;--ok:#59d38a;--on-ink:#151a2e}}
+:root[data-theme="dark"]{--paper:#151a2e;--grid:#222a47;--ink:#e3e9ff;--pen:#ff7a7a;--mark:#6b5b00;--mute:#9aa3c2;--card:#1d2340;--ok:#59d38a;--on-ink:#151a2e}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.6 "Golos Text",system-ui,sans-serif;color:var(--ink);background-color:var(--paper);
+ background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:26px 26px}
+body::before{content:"";position:fixed;inset:0 auto 0 clamp(14px,4vw,48px);width:2px;background:var(--pen);opacity:.5;pointer-events:none}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px 0 clamp(30px,7vw,72px)}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{font-weight:800;font-size:18px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.08;font-weight:800;margin:0 0 16px;max-width:14ch}
+h1 mark{background:var(--mark);color:inherit;padding:0 .12em}
+h2{font-size:clamp(24px,3.6vw,32px);line-height:1.2;margin:0 0 18px}
+p{max-width:62ch;margin:0 0 14px}
+.mute{color:var(--mute)}
+.btn{display:inline-block;font:inherit;font-weight:800;text-decoration:none;color:var(--on-ink);background:var(--ink);border:2px solid var(--ink);border-radius:6px;padding:13px 22px;box-shadow:4px 4px 0 var(--pen)}
+.btn.sm{padding:8px 14px;box-shadow:none;font-size:15px}
+.btn:hover{transform:translate(-1px,-1px)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.hero{display:grid;gap:36px;grid-template-columns:1.1fr .9fr;align-items:center;padding:36px 0 64px}
+.sheet{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:22px 22px 26px;box-shadow:6px 6px 0 var(--ink);transform:rotate(1.6deg);position:relative}
+.sheet small{color:var(--mute)}
+.sheet .q{font-size:22px;font-weight:600;margin:6px 0 4px}
+.sheet .sol{font-size:22px;color:var(--ink);border-bottom:2px solid var(--ink);display:inline-block;padding:0 4px}
+.pen{font-family:Caveat,cursive;font-weight:700;color:var(--pen);font-size:34px;line-height:1.1;margin-top:14px;transform:rotate(-4deg);display:inline-block}
+section{padding:44px 0;border-top:2px solid var(--ink)}
+.topics{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.topics li{display:grid;grid-template-columns:96px 1fr;gap:14px;background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:14px 16px}
+.topics b{background:var(--mark);align-self:start;text-align:center;padding:2px 6px;font-size:15px}
+.topics span{color:var(--mute)}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:12px;max-width:62ch}
+ol.steps li::marker{font-weight:800;color:var(--pen)}
+.cta{text-align:center;padding:56px 0}
+.cta h2,.cta p{margin-left:auto;margin-right:auto}
+.contacts{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;margin-top:22px}
+.contacts a{color:var(--ink);font-weight:600}
+footer{padding:22px 0 40px;color:var(--mute);font-size:14px;border-top:2px solid var(--ink)}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:12px}.sheet{transform:none}.topics li{grid-template-columns:1fr;gap:6px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
 </head>
 <body>
+<div class="wrap">
+<header>
+  <span class="brand">ОГЭ · математика</span>
+  <a class="btn sm" data-bot href="#">Записаться</a>
+</header>
 
-    <!-- Навигация по приложению -->
-    <div class="nav-tabs">
-        <button class="tab-btn active" onclick="openTab('theory')">📐 Теория и Практика</button>
-        <button class="tab-btn" onclick="openTab('signup')">📝 Запись на урок</button>
-        <button class="tab-btn" onclick="openTab('about')">ℹ️ О курсе</button>
+<main>
+  <div class="hero">
+    <div>
+      <h1>Сдай ОГЭ по математике <mark>уверенно</mark></h1>
+      <p class="mute">Онлайн-занятия, интерактивная платформа и разбор каждой ошибки. Первый урок бесплатный: попробуй и реши, подходит ли тебе формат.</p>
+      <a class="btn" data-bot href="#">Записаться на пробный урок</a>
+      <p class="mute" style="margin-top:14px;font-size:15px">Запись проходит в Telegram и занимает минуту.</p>
     </div>
-
-    <!-- ВКЛАДКА: ТЕОРИЯ И ПРАКТИКА -->
-    <div id="theory" class="content-section active">
-        <h2>Материалы для подготовки</h2>
-        <div class="card">
-            <h3>🏠 Блок 1-5 (Практические задачи)</h3>
-            <p>Округляйте пачки/плитки вверх, ищите скрытые прямоугольные треугольники в планах участков.</p>
-            <div class="card" style="background: rgba(0,0,0,0.05)">
-                <b>Задача:</b> Куртка стоила 4000 ₽. Цену снизили на 15%. Сколько рублей стоит куртка теперь?<br>
-                <button class="btn-action" style="padding: 6px; font-size: 12px;" onclick="toggleSol('sol1')">Показать решение</button>
-                <div id="sol1" class="solution">Ответ: 3400. Скидка: 4000 * 0.15 = 600 ₽. Новая цена: 4000 - 600 = 3400 ₽.</div>
-            </div>
-        </div>
-        <div class="card">
-            <h3>🧮 Алгебра и Геометрия</h3>
-            <p>Теорема Пифагора: a² + b² = c². Помните, что при делении неравенства на отрицательное число знак разворачивается!</p>
-        </div>
+    <div class="sheet" aria-hidden="true">
+      <small>Задание 6</small>
+      <p class="q">0,6 · 15 − 2,4 =</p>
+      <span class="sol">6,6</span>
+      <div class="pen">верно! так держать</div>
     </div>
+  </div>
 
-    <!-- ВКЛАДКА: ЗАПИСЬ НА УРОК (ФОРМА) -->
-    <div id="signup" class="content-section">
-        <h2>Заявка на бесплатный урок</h2>
-        <form id="leadForm">
-            <div class="form-group">
-                <label>Ваше ФИО:</label>
-                <input type="text" id="fullname" placeholder="Иван Иванов" required>
-            </div>
-            <div class="form-group">
-                <label>Класс обучения:</label>
-                <select id="grade">
-                    <option value="8 класс">8 класс</option>
-                    <option value="9 класс" selected>9 класс</option>
-                    <option value="Экстерн">Экстерн</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Номер телефона:</label>
-                <input type="tel" id="phone" placeholder="+7 (999) 999-99-99" required>
-            </div>
-            <button type="submit" class="btn-action">Отправить заявку</button>
-        </form>
+  <section id="prep">
+    <h2>Что входит в подготовку</h2>
+    <ul class="topics">
+      <li><b>задания 1-5</b><div>Практические задачи<br><span>Шины, тарифы, планы участков и листы бумаги: лёгкие баллы, которые нельзя терять.</span></div></li>
+      <li><b>задания 6-14</b><div>Алгебра<br><span>Дроби, уравнения, неравенства, графики функций, статистика и вероятность.</span></div></li>
+      <li><b>задания 15-19</b><div>Геометрия<br><span>Треугольники, окружности, четырёхугольники, площади и геометрические утверждения.</span></div></li>
+      <li><b>задания 20-25</b><div>Часть 2<br><span>Задачи с полным решением: учимся записывать ход мысли так, чтобы получить баллы.</span></div></li>
+      <li><b>всегда под рукой</b><div>Шпаргалки<br><span>Формулы и правила на одной странице для быстрого повторения.</span></div></li>
+    </ul>
+  </section>
+
+  <section id="how">
+    <h2>Как проходят занятия</h2>
+    <ol class="steps">
+      <li><strong>Записываешься в Telegram.</strong> Отвечаешь на три вопроса: имя, класс и телефон.</li>
+      <li><strong>Приходишь на бесплатный пробный урок.</strong> Смотрим, как ты решаешь, и находим слабые места.</li>
+      <li><strong>Получаешь план подготовки.</strong> Он строится под твой уровень и оставшееся до экзамена время.</li>
+      <li><strong>Занимаешься онлайн.</strong> Теория, тренажёры и разбор домашних заданий на каждом уроке.</li>
+    </ol>
+  </section>
+
+  <section id="teacher">
+    <h2>О преподавателе</h2>
+    <p>Математическое образование и опыт подготовки школьников к ОГЭ. Объясняю простым языком, разбираю каждую ошибку и не даю скучать.</p>
+    <p class="mute">Добавьте сюда стаж, результаты учеников и фото.</p>
+  </section>
+
+  <section class="cta" id="join">
+    <h2>Попробуй бесплатно</h2>
+    <p class="mute">Нажми кнопку: откроется бот в Telegram, и он запишет тебя на пробный урок.</p>
+    <a class="btn" data-bot href="#">Открыть бота в Telegram</a>
+    <div class="contacts">
+      <a data-teacher href="#">Написать преподавателю</a>
+      <a data-phone href="#"></a>
     </div>
+  </section>
+</main>
+<footer>© <span id="y"></span> Подготовка к ОГЭ по математике</footer>
+</div>
 
-    <!-- ВКЛАДКА: О КУРСЕ -->
-    <div id="about" class="content-section">
-        <h2>О курсе преподавателя</h2>
-        <div class="card">
-            <p>👨‍🏫 Опытный математик разберет с вами все типы ловушек ОГЭ без зубрежки формул. Занятия на интерактивной платформе.</p>
-        </div>
-    </div>
+<script>
+/* Замените на свои данные */
+const BOT_USERNAME = "your_bot_username";      // без @
+const TEACHER_USERNAME = "your_teacher";       // без @
+const PHONE = "+7 900 000-00-00";
 
-    <script>
-        // Инициализация Telegram Web App
-        const tg = window.Telegram.WebApp;
-        tg.ready();
-        tg.expand(); // Расширяем приложение на весь экран
-
-        function openTab(tabId) {
-            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
-
-        function toggleSol(id) {
-            const el = document.getElementById(id);
-            el.style.display = el.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // Обработка отправки формы
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const leadData = {
-                full_name: document.getElementById('fullname').value,
-                grade: document.getElementById('grade').value,
-                phone: document.getElementById('phone').value
-            };
-
-            // Отправляем структурированные данные обратно боту
-            tg.sendData(JSON.stringify(leadData));
-            tg.close(); // Закрываем приложение после отправки
-        });
-    </script>
+document.querySelectorAll("[data-bot]").forEach(a => {
+  a.href = "https://t.me/" + BOT_USERNAME + "?start=site"; a.target = "_blank"; a.rel = "noopener";
+});
+document.querySelectorAll("[data-teacher]").forEach(a => {
+  a.href = "https://t.me/" + TEACHER_USERNAME; a.target = "_blank"; a.rel = "noopener";
+});
+document.querySelectorAll("[data-phone]").forEach(a => {
+  a.href = "tel:" + PHONE.replace(/[^\d+]/g, ""); a.textContent = PHONE;
+});
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
